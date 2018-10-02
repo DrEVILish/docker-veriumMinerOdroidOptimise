@@ -6,18 +6,18 @@ RUN         apt update && \
 
 RUN         mkdir /verium
 
-RUN         git clone https://github.com/effectsToCause/veriumMiner ~/verium/1wayminer && \
-            sed -i -e 's/#define SCRYPT_MAX_WAYS 3/#define SCRYPT_MAX_WAYS 1/g' ~/verium/1wayminer/algo/scrypt.c && \
-            sed -i -e 's/#define HAVE_SCRYPT_3WAY 1/\/\/#define HAVE_SCRYPT_3WAY 1/g' ~/verium/1wayminer/algo/scrypt.c && \
-            sed -i -e 's/#define scrypt_best_throughput() 3/#define scrypt_best_throughput() 1/g' ~/verium/1wayminer/algo/scrypt.c && \
-            sed -i -e 's/void scrypt_core_3way/void scrypt_core /g' ~/verium/1wayminer/algo/scrypt.c && \
-            sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' ~/verium/1wayminer/build.sh && \
-            cd verium/1wayminer
+RUN         git clone https://github.com/effectsToCause/veriumMiner /verium/1wayminer && \
+            sed -i -e 's/#define SCRYPT_MAX_WAYS 3/#define SCRYPT_MAX_WAYS 1/g' /verium/1wayminer/algo/scrypt.c && \
+            sed -i -e 's/#define HAVE_SCRYPT_3WAY 1/\/\/#define HAVE_SCRYPT_3WAY 1/g' /verium/1wayminer/algo/scrypt.c && \
+            sed -i -e 's/#define scrypt_best_throughput() 3/#define scrypt_best_throughput() 1/g' /verium/1wayminer/algo/scrypt.c && \
+            sed -i -e 's/void scrypt_core_3way/void scrypt_core /g' /verium/1wayminer/algo/scrypt.c && \
+            sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' /verium/1wayminer/build.sh && \
+            cd /verium/1wayminer
 RUN         ./build.sh
 
-RUN         git clone https://github.com/effectsToCause/veriumMiner ~/verium/3wayminer && \
-            sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' ~/verium/3wayminer/build.sh && \
-            cd verium/3wayminer
+RUN         git clone https://github.com/effectsToCause/veriumMiner /verium/3wayminer && \
+            sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' /verium/3wayminer/build.sh && \
+            cd /verium/3wayminer
 RUN         ./build.sh
 
 
