@@ -20,7 +20,4 @@ RUN         git clone https://github.com/effectsToCause/veriumMiner /verium/3way
 RUN         cd /verium/3wayminer && \
             ./build.sh
 
-
-COPY        init.sh /init.sh
-RUN         chmod +x /init.sh
 WORKDIR     /verium
