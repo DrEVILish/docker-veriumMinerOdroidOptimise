@@ -21,5 +21,5 @@ RUN         git clone https://github.com/effectsToCause/veriumMiner ~/verium/3wa
 RUN         ./build.sh
 
 
-COPY        initiliseScript.sh /initiliseScript.sh
-ENTRYPOINT  ["/initiliseScript.sh"]
+COPY        init.sh /init.sh
+ENTRYPOINT  ["/init.sh"]
