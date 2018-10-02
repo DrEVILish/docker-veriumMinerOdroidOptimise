@@ -13,12 +13,12 @@ RUN         git clone https://github.com/effectsToCause/veriumMiner /verium/1way
             sed -i -e 's/void scrypt_core_3way/void scrypt_core /g' /verium/1wayminer/algo/scrypt.c && \
             sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' /verium/1wayminer/build.sh && \
             cd /verium/1wayminer
-RUN         ./build.sh
+RUN         /verium/1wayminer/build.sh
 
 RUN         git clone https://github.com/effectsToCause/veriumMiner /verium/3wayminer && \
             sed -i -e 's/-DUSE_ASM -pg/-DUSE_ASM -mfpu=neon -pg/g' /verium/3wayminer/build.sh && \
             cd /verium/3wayminer
-RUN         ./build.sh
+RUN         /verium/3wayminer/build.sh
 
 
 COPY        init.sh /init.sh
